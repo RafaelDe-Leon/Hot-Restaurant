@@ -8,43 +8,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
-// var tables = [
-//     {
-//       routeName: "table#1",
-//       ID: "",
-//       Name: "",
-//       email: "",
-//       phone: "" + "-" + "" + "-" + ""
-//     },
-//     {
-//         routeName: "table#2",
-//         ID: "",
-//         Name: "",
-//         email: "",
-//         phone: "" + "-" + "" + "-" + ""
-//       },
-//       {
-//         routeName: "table#3",
-//         ID: "",
-//         Name: "",
-//         email: "",
-//         phone: "" + "-" + "" + "-" + ""
-//       },
-//       {
-//         routeName: "table#4",
-//         ID: "",
-//         Name: "",
-//         email: "",
-//         phone: "" + "-" + "" + "-" + ""
-//       },
-//       {
-//         routeName: "table#5",
-//         ID: "",
-//         Name: "",
-//         email: "",
-//         phone: "" + "-" + "" + "-" + ""
-//       },
-//   ];
+var tables = [
+    {
+      routeName: "table#1",
+      ID: "Test1",
+      Name: "Test1",
+      email: "test1",
+      phone: "2" + "222-" + "222" + "-" + "222"
+    },
+  ];
   
   // Routes
   // =============================================================
@@ -65,6 +37,11 @@ app.use(express.json());
     res.sendFile(path.join(__dirname, "tables.html"));
   });
   
+  // Display API
+app.get("/api", function(req, res) {
+  return res.json(tables);
+});
+
   
 
   
