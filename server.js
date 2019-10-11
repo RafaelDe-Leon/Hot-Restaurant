@@ -59,6 +59,12 @@ app.use(express.json());
   app.get("/reservation", function(req, res) {
     res.sendFile(path.join(__dirname, "reservation.html"));
   });
+
+  // display tables
+  app.get("/tables", function(req, res) {
+    res.sendFile(path.join(__dirname, "tables.html"));
+  });
+  
   
 
   
