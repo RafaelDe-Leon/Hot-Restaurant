@@ -49,19 +49,18 @@ var tables = [
   // Routes
   // =============================================================
   
-  // Basic route that sends the user first to the AJAX Page
+  // display home page
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "view.html"));
+    res.sendFile(path.join(__dirname, "index.html"));
   });
   
-  app.get("/add", function(req, res) {
-    res.sendFile(path.join(__dirname, "add.html"));
+
+  // display reservartion
+  app.get("/reservartion", function(req, res) {
+    res.sendFile(path.join(__dirname, "reservertion.html"));
   });
   
-  // Displays all characters
-  app.get("/api/characters", function(req, res) {
-    return res.json(characters);
-  });
+
   
   // Displays a single character, or returns false
   app.get("/api/characters/:character", function(req, res) {
