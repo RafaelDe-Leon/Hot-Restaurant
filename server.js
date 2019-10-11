@@ -7,7 +7,7 @@ var PORT = 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
+// tables 
 var tables = [
     {
       routeName: "table#1",
@@ -16,7 +16,52 @@ var tables = [
       email: "test1",
       phone: "2" + "222-" + "222" + "-" + "222"
     },
+    {
+      routeName: "table#1",
+      ID: "Test1",
+      Name: "Test1",
+      email: "test1",
+      phone: "2" + "222-" + "222" + "-" + "222"
+    },
+    {
+      routeName: "table#1",
+      ID: "Test1",
+      Name: "Test1",
+      email: "test1",
+      phone: "2" + "222-" + "222" + "-" + "222"
+    },
+    {
+      routeName: "table#1",
+      ID: "Test1",
+      Name: "Test1",
+      email: "test1",
+      phone: "2" + "222-" + "222" + "-" + "222"
+    },
+    {
+      routeName: "table#1",
+      ID: "Test1",
+      Name: "Test1",
+      email: "test1",
+      phone: "2" + "222-" + "222" + "-" + "222"
+    }
   ];
+
+  var waitingList = [
+    {
+      routeName: "table#2",
+      ID: "Test2",
+      Name: "Test2",
+      email: "test2",
+      phone: "2" + "222-" + "222" + "-" + "222"
+    },
+    {
+      routeName: "table#2",
+      ID: "Test2",
+      Name: "Test2",
+      email: "test2",
+      phone: "2" + "222-" + "222" + "-" + "222"
+    }
+  ]
   
   // Routes
   // =============================================================
@@ -38,45 +83,33 @@ var tables = [
   });
   
   // Display API
-app.get("/api", function(req, res) {
+app.get("/api/tables", function(req, res) {
+
   return res.json(tables);
 });
 
-  
+app.get("/api/waitlist", function(req, res) {
+  return res.json(waitingList);
+});
 
+
+app.post("/api/tables", function (req, res) {
+
+console.log(req.body);
+
+if (tables.length < 5){
   
-  // // Displays a single character, or returns false
-  // app.get("/api/characters/:character", function(req, res) {
-  //   var chosen = req.params.character;
-  
-  //   console.log(chosen);
-  
-  //   for (var i = 0; i < characters.length; i++) {
-  //     if (chosen === characters[i].routeName) {
-  //       return res.json(characters[i]);
-  //     }
-  //   }
-  
-  //   return res.json(false);
-  // });
-  
-  // // Create New Characters - takes in JSON input
-  // app.post("/api/characters", function(req, res) {
-  //   // req.body hosts is equal to the JSON post sent from the user
-  //   // This works because of our body parsing middleware
-  //   var newCharacter = req.body;
-  
-  //   // Using a RegEx Pattern to remove spaces from newCharacter
-  //   // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  //   newCharacter.routeName = newCharacter.name.replace(/\s+/g, "").toLowerCase();
-  
-  //   console.log(newCharacter);
-  
-  //   characters.push(newCharacter);
-  
-  //   res.json(newCharacter);
-  // });
-  
+  tables.push(req.body)
+  res.json(true);
+} else {
+  waitingList.push(req.body)
+  res.json(false)
+}
+
+});
+
+
+
   // // Starts the server to begin listening
   // // =============================================================
   app.listen(PORT, function() {
